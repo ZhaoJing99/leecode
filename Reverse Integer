@@ -11,7 +11,8 @@
 class Solution {
     public int reverse(int x) {
         int a ;
-        if(x== 0){
+        
+        if(x== 0||x == Integer.MIN_VALUE||x == Integer.MAX_VALUE){
             return 0;
         }
        else if(x<0){  //判断x是否为负数，如果为负数，变为正数；
@@ -23,11 +24,14 @@ class Solution {
        String renum = Integer.toString(a);
        int num[] = new int[renum.length()];
        int numLength = renum.length();
+       
+       
        for (int i = 0; i< numLength;i++){
            Character ch = renum.charAt(i);
            num[numLength-i-1] = Integer.parseInt(ch.toString());
        }
        
+
        String result = "";
        for(int j = 0; j<renum.length();j++){
            String s = new String();
@@ -35,13 +39,20 @@ class Solution {
            s = Integer.toString(k);
           result = result.concat(s);        
        }
-       int resultNum = Integer.parseInt(result);
-       
-        if(x<0){
-            resultNum= -resultNum;
-            return resultNum;
+        long resultNum = Long.parseLong(result,10);
+        if (resultNum >= Integer.MAX_VALUE) {
+            return 0;
         }
-        else{return resultNum;}  
+        else 
+       if(x<0){
+            return -Integer.parseInt(result);
+        }
+        else{
+            return Integer.parseInt(result);
+        } 
+        
+    }
        
-     }
 }
+
+
