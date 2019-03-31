@@ -15,7 +15,7 @@ class Solution {
         if(x== 0||x == Integer.MIN_VALUE||x == Integer.MAX_VALUE){
             return 0;
         }
-       else if(x<0){  //判断x是否为负数，如果为负数，变为正数；
+       else if(x<0){  
             a = -x;
        }
         else{
